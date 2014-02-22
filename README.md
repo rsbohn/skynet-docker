@@ -23,16 +23,33 @@ The new image will clone the official Skynet.im project from Github,
 then run `npm install`.
 
 ## Configure your Skynet.im
-Currently you need to provide a Mongodb and a Redis for your Skynet.im.
-You can start with the sample config.js provided:
+See the sample configuration:
 
-    sudo docker run -i skynet:preview cat /skynet/config.js.sample > config.js
+    sudo docker run -i skynet:preview cat /skynet/config.js.sample
+    
+See the current configuration:
 
-then edit the file as needed. Adding the config.js file to the skynet image is
-left as an exercise for the reader.
+    sudo docker run -i skynet:preview cat /skynet/config.js
+
+## Running Skynet
+You need a mongodb account, with a user and password.
+You need to bind the container port to a host machine port.
+
+    export MONGODB=mongodb://<username>:<password>@<your-mongo-host><port>/<database>
+    sudo docker run -i -p 5000:5000 -e MONGODB=$MONGODB skynet:preview node skynet:preview
+    
+You will see some error messages about Redis, that isn't configured yet. You can add it to
+the config.js file and then rebuild your skynet:preview image. Once it is running you can
+run (in a different terminal window):
+
+    curl http://localhost:5000/status
+    
+which should return something like this:
+
+    {"skynet":"online","timestamp":1393089501675,"eventCode":200,"_id":"5308dbdd0c8b720100000004"}
 
 ## Next Steps
-- Configuration: Need to figure out how to connect to Redis
+- Connect to Redis
 - Provision datastores: Use dockerfile/mongodb and dockerfile/redis 
     (get everything running within docker)
 - Link containers: Use docker links between containers. Will most likely mean
