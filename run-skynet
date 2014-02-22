@@ -1,0 +1,1 @@
+sudo docker run -i -P skynet:preview bash -c "PORT=5000 node /skynet/server.js"
