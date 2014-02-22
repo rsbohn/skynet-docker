@@ -1,5 +1,5 @@
 # skynet-docker
-Start your own Skynet.im in a Docker container.
+Skynet.im in a Docker Container
 
 This project will allow you to start hacking Skynet.im 
 in Docker. You will need to have Docker installed
@@ -52,3 +52,4 @@ Docker containerization by Randall Bohn [Twitter](https://twitter.com/rsbohn).
 
 ## License
 MIT license: see LICENSE file for details. Skynet.im uses a similar license.
+
