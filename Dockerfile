@@ -11,6 +11,9 @@ MAINTAINER Randall Bohn <rsbohn@gmail.com>
 RUN git clone https://github.com/skynetim/skynet.git /skynet
 WORKDIR /skynet
 RUN npm install
+ADD config.js /skynet/config.js
 
+ENV RATELIMIT 10
+ENV PORT 5000
 EXPOSE 5000
-#ENTRYPOINT PORT=5000 node /skynet/server.js
+#ENTRYPOINT node /skynet/server.js
